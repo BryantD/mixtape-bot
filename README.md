@@ -10,3 +10,5 @@ To do:
 Stuff I used:
 * The profile image on the bot's Twitter and Mastodon accounts is by Andrey Korzun [CC BY-SA 4.0  (https://creativecommons.org/licenses/by-sa/4.0)], from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Compact_Cassette_-_TDK_SA_60.JPG)
 * The data set is [Billboard Hot 100 1958-2017](https://data.world/kcmillersean/billboard-hot-100-1958-2017), from Sean Miller
+* [Tweepy](http://www.tweepy.org), which is nice and simple
+* [Mastodon.py](http://mastodonpy.readthedocs.io/en/latest/), which is also pretty simple
