@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 import argparse
-import json
 import sqlite3
-import tweepy
 import random
-#from credentials import *
+import tweepy
+from mastodon import Mastodon
+from credentials import *
 
 # By Andrey Korzun [CC BY-SA 4.0  (https://creativecommons.org/licenses/by-sa/4.0)], from Wikimedia Commons
 
@@ -65,13 +65,13 @@ def pickEmotion():
 		return "hate"
 
 def generate():
-
 	parser = argparse.ArgumentParser(description='Mix tape tweetbot')
 	parser.add_argument('--maxlen', default=280, type=int, help='Max tweet length')
 	parser.add_argument('--start', default=1980, type=int, help='Start year')
 	parser.add_argument('--end', default=1989, type=int, help='End year')
-	parser.add_argument('--print', help='Print score', action='store_true')
-	parser.add_argument('--tweet', help='Tweet score', action='store_true')
+	parser.add_argument('--print', help='Print mixtape', action='store_true')
+	parser.add_argument('--tweet', help='Tweet mixtape', action='store_true')
+	parser.add_argument('--toot', help='Toot mixtape', action='store_true')
 	args = parser.parse_args()
 
 	conn = sqlite3.connect('mixtape.db')
@@ -88,6 +88,11 @@ def generate():
 
 	if args.print:
 		print(text)
+	if args.toot:
+		mastodon = Mastodon(
+			access_token=mastodon_access_token,
+			api_base_url = 'https://botsin.space')
+		mastodon.toot(text)
 	if args.tweet:
 		api.update_status(text)
 
