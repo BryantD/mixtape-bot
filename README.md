@@ -1,7 +1,7 @@
 Bot script to generate five song mix tapes based on the Billboard Top 100 for a 
 given year. By default, it draws on the 1980s. 
 
-Currently sending output to [https://botsin.space/@scratchytdk](https://botsin.space/@scratchytdk). Twitter is waiting on approval of my developer application. 
+Currently sending output to  [https://botsin.space/@scratchytdk](https://botsin.space/@scratchytdk). Twitter output is waiting on approval of my developer application. 
 
 To do:
 * Twitter posts
