@@ -94,6 +94,7 @@ def pickEmotion():
 def generate():
 	parser = argparse.ArgumentParser(description='Mix tape tweetbot')
 	parser.add_argument('--maxlen', default=280, type=int, help='Max tweet length')
+	parser.add_argument('--db', required=True, help='Database location')
 	parser.add_argument('--start', default=1980, type=int, help='Start year')
 	parser.add_argument('--end', default=1989, type=int, help='End year')
 	parser.add_argument('--print', help='Print mixtape', action='store_true')
@@ -101,7 +102,7 @@ def generate():
 	parser.add_argument('--toot', help='Toot mixtape', action='store_true')
 	args = parser.parse_args()
 
-	conn = sqlite3.connect('mixtape.db')
+	conn = sqlite3.connect(args.db)
 	c = conn.cursor()
 
 	mixWeek = pickWeek(c, args.start, args.end)
@@ -122,6 +123,8 @@ def generate():
 		mastodon.toot(text)
 	if args.tweet:
 		api.update_status(text)
+		
+	conn.close()
 
 if __name__ == '__main__':
     generate()
