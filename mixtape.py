@@ -207,8 +207,8 @@ def generate():
 			playlistName = '{}/{}/{}'.format(mixWeek[5:7].lstrip('0'), mixWeek[8:10].lstrip('0'), mixWeek[0:4])
 			spotifyURL = makePlaylist(spotifyToken, spotify_user_id, playlistName, songIDs)
 		
-		if not spotifyURL == 0:
-			text += '\n\n{}'.format(spotifyURL)
+			if not spotifyURL == 0:
+				text += '\n\n{}'.format(spotifyURL)
 
 	if args.print:
 		print(text)
